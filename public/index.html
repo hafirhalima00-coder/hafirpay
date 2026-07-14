@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HafirPay — Payments Without Borders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <nav class="nav">
+      <div class="nav-brand" onclick="navigate('landing')">
+        <img src="logo.svg" alt="HafirPay" class="logo-img">
+        <span class="logo-text">HafirPay</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" onclick="navigate('landing')">Home</a>
+        <a href="#" onclick="navigate('login')" id="nav-login">Merchant Login</a>
+        <a href="#" onclick="navigate('register')" id="nav-register" class="btn btn-sm">Get Started</a>
+      </div>
+    </nav>
+
+    <!-- LANDING -->
+    <div id="view-landing" class="view active">
+      <section class="hero">
+        <div class="hero-badge">Built for the underserved</div>
+        <h1>Payments<br><span class="gradient">Without Borders</span></h1>
+        <p class="hero-desc">Millions of businesses can't use Stripe or PayPal. HafirPay gives them a modern payment gateway that sends money straight to their bank account.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" onclick="navigate('register')">Start Accepting Payments</button>
+          <button class="btn btn-outline btn-lg" onclick="document.getElementById('how-it-works').scrollIntoView()">How It Works</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-number">50+</span><span class="stat-label">Countries</span></div>
+          <div class="stat"><span class="stat-number">0%</span><span class="stat-label">Platform Fees</span></div>
+          <div class="stat"><span class="stat-number">24h</span><span class="stat-label">Bank Transfer</span></div>
+        </div>
+      </section>
+
+      <section class="features" id="how-it-works">
+        <div class="section-header">
+          <h2>How It Works</h2>
+          <p>Three steps to start accepting payments</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🏦</div>
+            <h3>Add Your Bank</h3>
+            <p>Enter your bank details once. Payments go directly to your account — no middleman holding your money.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔗</div>
+            <h3>Share Payment Link</h3>
+            <p>Get a unique payment link or integrate via API. Customers see a clean, professional checkout.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💸</div>
+            <h3>Get Paid</h3>
+            <p>Customer pays → money goes to your bank. Simple, transparent, no hidden fees eating your margins.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="section-header">
+          <h2>Built for Automation</h2>
+          <p>Let AI agents and bots handle your payments</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>Agent API Keys</h3>
+            <p>Give your AI agents dedicated API keys to create payment links and send invoices automatically.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📧</div>
+            <h3>Auto Invoices</h3>
+            <p>Send professional HTML invoices via email with one click or automate via API. Zero manual work.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>REST API</h3>
+            <p>Full REST API for creating transactions, sending invoices, and checking payment status.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Ready to get paid?</h2>
+        <p>Join thousands of merchants who stopped losing customers to payment barriers.</p>
+        <button class="btn btn-primary btn-lg" onclick="navigate('register')">Create Free Account</button>
+      </section>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="view-register" class="view">
+      <div class="auth-container">
+        <div class="auth-card">
+          <h2>Create Your Account</h2>
+          <p class="auth-subtitle">Start accepting payments in under 2 minutes</p>
+          <form id="register-form">
+            <div class="form-group">
+              <label>Business Name</label>
+              <input type="text" id="reg-business" placeholder="My Store" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="reg-email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="reg-password" placeholder="Min 6 characters" required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+          </form>
+          <p class="auth-switch">Already have an account? <a href="#" onclick="navigate('login')">Sign in</a></p>
+          <div id="reg-error" class="error-msg"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="view-login" class="view">
+      <div class="auth-container">
+        <div class="auth-card">
+          <h2>Merchant Login</h2>
+          <p class="auth-subtitle">Access your dashboard</p>
+          <form id="login-form">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="login-email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="login-password" placeholder="Your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+          </form>
+          <p class="auth-switch">New here? <a href="#" onclick="navigate('register')">Create account</a></p>
+          <div id="login-error" class="error-msg"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="view-dashboard" class="view">
+      <div class="dashboard">
+        <aside class="sidebar">
+          <div class="sidebar-brand"><img src="logo.svg" alt="HafirPay" class="logo-img"><span class="logo-text">HafirPay</span></div>
+          <div class="sidebar-business" id="dash-business-name"></div>
+          <nav class="sidebar-nav">
+            <a href="#" class="active" onclick="showDashTab('overview')">📊 Overview</a>
+            <a href="#" onclick="showDashTab('transactions')">💳 Transactions</a>
+            <a href="#" onclick="showDashTab('bank')">🏦 Bank Details</a>
+            <a href="#" onclick="showDashTab('link')">🔗 Payment Link</a>
+            <a href="#" onclick="showDashTab('api')">⚡ API</a>
+            <a href="#" onclick="showDashTab('agents')">🤖 Agent Keys</a>
+            <a href="#" onclick="showDashTab('email')">📧 Email</a>
+          </nav>
+          <button class="btn btn-outline btn-sm" onclick="logout()" style="margin-top:auto">Logout</button>
+        </aside>
+        <main class="dash-main">
+          <!-- Overview -->
+          <div id="tab-overview" class="dash-tab active">
+            <h2>Dashboard</h2>
+            <div class="stats-grid">
+              <div class="stat-card"><div class="stat-card-label">Total Revenue</div><div class="stat-card-value" id="stat-revenue">$0.00</div></div>
+              <div class="stat-card"><div class="stat-card-label">Transactions</div><div class="stat-card-value" id="stat-count">0</div></div>
+              <div class="stat-card"><div class="stat-card-label">Completed</div><div class="stat-card-value" id="stat-completed">0</div></div>
+              <div class="stat-card"><div class="stat-card-label">Pending</div><div class="stat-card-value" id="stat-pending">0</div></div>
+            </div>
+            <div class="recent-section">
+              <h3>Recent Transactions</h3>
+              <div id="recent-txns" class="txn-list"></div>
+            </div>
+          </div>
+
+          <!-- Transactions -->
+          <div id="tab-transactions" class="dash-tab">
+            <h2>All Transactions</h2>
+            <div id="all-txns" class="txn-list"></div>
+          </div>
+
+          <!-- Bank Details -->
+          <div id="tab-bank" class="dash-tab">
+            <h2>Bank Details</h2>
+            <p class="tab-desc">Add your bank account. Customers pay directly to this account.</p>
+            <div id="existing-banks"></div>
+            <div class="card" style="margin-top:1.5rem">
+              <h3>Add Bank Account</h3>
+              <form id="bank-form">
+                <div class="form-row">
+                  <div class="form-group"><label>Bank Name</label><input type="text" id="bank-name" placeholder="Chase, HSBC, etc." required></div>
+                  <div class="form-group"><label>Account Holder</label><input type="text" id="bank-holder" placeholder="John Doe" required></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"><label>Account Number</label><input type="text" id="bank-account" placeholder="123456789" required></div>
+                  <div class="form-group"><label>Routing Number</label><input type="text" id="bank-routing" placeholder="021000021"></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"><label>IBAN</label><input type="text" id="bank-iban" placeholder="GB29NWBK60161331926819"></div>
+                  <div class="form-group"><label>SWIFT/BIC</label><input type="text" id="bank-swift" placeholder="NWBKGB2L"></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Country</label>
+                    <select id="bank-country" required>
+                      <option value="">Select country</option>
+                      <option value="NG">Nigeria</option><option value="GH">Ghana</option><option value="KE">Kenya</option>
+                      <option value="ZA">South Africa</option><option value="IN">India</option><option value="PK">Pakistan</option>
+                      <option value="BD">Bangladesh</option><option value="PH">Philippines</option><option value="ID">Indonesia</option>
+                      <option value="BR">Brazil</option><option value="MX">Mexico</option><option value="AR">Argentina</option>
+                      <option value="CO">Colombia</option><option value="EG">Egypt</option><option value="MA">Morocco</option>
+                      <option value="TZ">Tanzania</option><option value="UG">Uganda</option><option value="SN">Senegal</option>
+                      <option value="US">United States</option><option value="GB">United Kingdom</option><option value="DE">Germany</option>
+                      <option value="OTHER">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Currency</label>
+                    <select id="bank-currency">
+                      <option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option>
+                      <option value="NGN">NGN</option><option value="KES">KES</option><option value="GHS">GHS</option>
+                      <option value="ZAR">ZAR</option><option value="INR">INR</option><option value="BRL">BRL</option>
+                      <option value="MXN">MXN</option><option value="PHP">PHP</option><option value="IDR">IDR</option><option value="EGP">EGP</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Bank Details</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Payment Link -->
+          <div id="tab-link" class="dash-tab">
+            <h2>Payment Link</h2>
+            <p class="tab-desc">Generate a payment link to share with customers.</p>
+            <div class="card">
+              <h3>Create Payment Link</h3>
+              <form id="link-form">
+                <div class="form-row">
+                  <div class="form-group"><label>Amount</label><input type="number" id="link-amount" step="0.01" min="0.01" placeholder="25.00" required></div>
+                  <div class="form-group"><label>Currency</label><select id="link-currency"><option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option></select></div>
+                </div>
+                <div class="form-group"><label>Description</label><input type="text" id="link-desc" placeholder="Payment for..."></div>
+                <div class="form-row">
+                  <div class="form-group"><label>Customer Name</label><input type="text" id="link-name" placeholder="John Doe"></div>
+                  <div class="form-group"><label>Customer Email (for invoice)</label><input type="email" id="link-email" placeholder="customer@example.com"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Generate Link</button>
+              </form>
+              <div id="link-result" style="display:none;margin-top:1.5rem">
+                <label>Share this link:</label>
+                <div class="copy-input"><input type="text" id="generated-link" readonly><button class="btn btn-sm" onclick="copyLink()">Copy</button></div>
+                <div id="link-qr" style="margin-top:1rem"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- API -->
+          <div id="tab-api" class="dash-tab">
+            <h2>API Integration</h2>
+            <p class="tab-desc">Integrate HafirPay into your store.</p>
+            <div class="card">
+              <h3>Your Merchant API Key</h3>
+              <div class="copy-input"><input type="text" id="api-key-display" readonly><button class="btn btn-sm" onclick="copyApiKey()">Copy</button></div>
+              <p class="code-note" style="margin-top:0.75rem">This is your <strong>merchant key</strong>. Use it for direct integrations. For AI agents, create <strong>Agent Keys</strong> in the Agent Keys tab.</p>
+            </div>
+            <div class="card" style="margin-top:1.5rem">
+              <h3>Create a Payment</h3>
+              <pre class="code-block"><code>curl -X POST https://hafirpay.app/api/transactions/create \
+  -H "x-api-key: hp_your_merchant_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 25.00,
+    "currency": "USD",
+    "description": "Order #1234",
+    "customerName": "John Doe",
+    "customerEmail": "john@example.com"
+  }'</code></pre>
+            </div>
+            <div class="card" style="margin-top:1.5rem">
+              <h3>Send Invoice via Email</h3>
+              <pre class="code-block"><code>curl -X POST https://hafirpay.app/api/transactions/HP-xxx/send-invoice \
+  -H "x-api-key: hp_your_merchant_key"</code></pre>
+              <p class="code-note">Sends a professional HTML invoice email to the customer's email on file.</p>
+            </div>
+            <div class="card" style="margin-top:1.5rem">
+              <h3>Agent API Usage</h3>
+              <pre class="code-block"><code># AI Agent creates a payment link
+curl -X POST https://hafirpay.app/api/agent/transactions/create \
+  -H "x-agent-key: hak_agent_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 50.00,
+    "currency": "USD",
+    "description": "Consulting session",
+    "customerEmail": "client@company.com"
+  }'
+
+# Agent sends invoice automatically
+curl -X POST https://hafirpay.app/api/agent/transactions/HP-xxx/send-invoice \
+  -H "x-agent-key: hak_agent_key_here"</code></pre>
+            </div>
+          </div>
+
+          <!-- Agent Keys -->
+          <div id="tab-agents" class="dash-tab">
+            <h2>Agent API Keys</h2>
+            <p class="tab-desc">Create dedicated API keys for your AI agents or automated systems. Each key can have limited permissions.</p>
+            <div id="existing-agents"></div>
+            <div class="card" style="margin-top:1.5rem">
+              <h3>Create Agent Key</h3>
+              <form id="agent-form">
+                <div class="form-group"><label>Agent Name</label><input type="text" id="agent-name" placeholder="My AI Bot" required></div>
+                <div class="form-group">
+                  <label>Permissions</label>
+                  <div style="display:flex;gap:1rem;margin-top:0.5rem;">
+                    <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;"><input type="checkbox" id="perm-payments" checked> Create Payments</label>
+                    <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;"><input type="checkbox" id="perm-invoices" checked> Send Invoices</label>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Generate Agent Key</button>
+              </form>
+              <div id="agent-result" style="display:none;margin-top:1.5rem">
+                <div class="warning-box">Save this key now. It won't be shown again.</div>
+                <div class="copy-input"><input type="text" id="agent-key-display" readonly><button class="btn btn-sm" onclick="copyAgentKey()">Copy</button></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Settings -->
+          <div id="tab-email" class="dash-tab">
+            <h2>Email Settings</h2>
+            <p class="tab-desc">Configure SMTP to send invoices directly to customers.</p>
+            <div class="card">
+              <h3>SMTP Configuration</h3>
+              <form id="smtp-form">
+                <div class="form-row">
+                  <div class="form-group"><label>SMTP Host</label><input type="text" id="smtp-host" placeholder="smtp.gmail.com" required></div>
+                  <div class="form-group"><label>Port</label><input type="number" id="smtp-port" value="587"></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"><label>Username / Email</label><input type="text" id="smtp-user" placeholder="you@gmail.com" required></div>
+                  <div class="form-group"><label>Password / App Password</label><input type="password" id="smtp-pass" placeholder="your-app-password" required></div>
+                </div>
+                <div class="form-group"><label>From Email</label><input type="email" id="smtp-from" placeholder="invoices@yourstore.com"></div>
+                <button type="submit" class="btn btn-primary">Save SMTP Settings</button>
+              </form>
+              <div id="smtp-status" style="margin-top:1rem"></div>
+            </div>
+            <div class="card" style="margin-top:1.5rem">
+              <h3>How Invoicing Works</h3>
+              <ol style="color:var(--text-muted);font-size:0.9rem;padding-left:1.25rem;line-height:2;">
+                <li>Configure your SMTP settings above</li>
+                <li>Create a payment with the customer's email address</li>
+                <li>Click "Send Invoice" on the transaction or use the API</li>
+                <li>Customer receives a professional HTML invoice with a Pay Now button</li>
+                <li>They click the link, see bank details, and transfer directly to you</li>
+              </ol>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- CHECKOUT -->
+    <div id="view-checkout" class="view">
+      <div class="checkout-container">
+        <div class="checkout-card">
+          <div class="checkout-header">
+            <div class="checkout-business" id="checkout-business"></div>
+            <div class="checkout-amount" id="checkout-amount"></div>
+            <div class="checkout-desc" id="checkout-desc"></div>
+          </div>
+          <div class="checkout-status" id="checkout-status"></div>
+          <div class="checkout-bank" id="checkout-bank" style="display:none">
+            <h3>Bank Transfer Details</h3>
+            <p class="checkout-instruction">Transfer the exact amount to this bank account:</p>
+            <div class="bank-info">
+              <div class="bank-row"><span>Bank</span><strong id="pay-bank-name"></strong></div>
+              <div class="bank-row"><span>Account Holder</span><strong id="pay-account-holder"></strong></div>
+              <div class="bank-row"><span>Account Number</span><strong id="pay-account-number"></strong></div>
+              <div class="bank-row" id="pay-iban-row"><span>IBAN</span><strong id="pay-iban"></strong></div>
+              <div class="bank-row" id="pay-swift-row"><span>SWIFT</span><strong id="pay-swift"></strong></div>
+              <div class="bank-row"><span>Reference</span><strong id="pay-reference" class="highlight-ref"></strong></div>
+            </div>
+            <div class="checkout-qr" id="checkout-qr"></div>
+            <div class="checkout-actions">
+              <button class="btn btn-primary btn-full" onclick="confirmPayment()">I've Made the Transfer</button>
+              <button class="btn btn-outline btn-full" onclick="cancelPayment()">Cancel</button>
+            </div>
+            <p class="checkout-note">Include the reference number in your transfer so we can match your payment.</p>
+          </div>
+          <div id="checkout-complete" style="display:none">
+            <div class="success-icon">✓</div>
+            <h3>Payment Confirmed!</h3>
+            <p>Thank you for your payment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="logo.svg" alt="HafirPay" class="footer-logo">
+          <span class="logo-text">HafirPay</span>
+        </div>
+        <div class="footer-credit">
+          Built by <strong>Halima Hafir</strong>
+          <a href="mailto:hafir.halima.00@gmail.com" class="footer-email">hafir.halima.00@gmail.com</a>
+        </div>
+        <div class="footer-tagline">Payments Without Borders</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
